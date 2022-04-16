@@ -2,11 +2,13 @@ import kotlinx.coroutines.*
 
 fun main() {
 
-    Join()
+   // Join()
 
-    cancelAndJoinWithCurrentTimeMillis()
+    cancelAndJoin()
 
-    cancelAndJoinFinally()
+    //cancelAndJoinWithCurrentTimeMillis()
+
+   // cancelAndJoinFinally()
 }
 
 private fun cancelAndJoinFinally() {
@@ -41,6 +43,16 @@ private fun cancelAndJoinWithCurrentTimeMillis() {
             }
         }
         delay(1300L) // delay a bit
+        job.cancelAndJoin()
+        println("Done")
+    }
+}
+private fun cancelAndJoin() {
+    runBlocking(newSingleThreadContext("root Dispatcher")) {
+        val job = launch(Dispatchers.Default) {
+            delay(1300L)
+            println("Done launch")
+        }
         job.cancelAndJoin()
         println("Done")
     }
