@@ -27,7 +27,15 @@ fun main() {
         println("Completed in $time ms")
     }
 
-
+    // Structured concurrency with async
+    runBlocking() {
+        // coroutineScope chỉ có thể xong sau khi 2 method kia chạy xong. Sử dụng await
+        coroutineScope {
+            val one = async { doSomethingUsefulOne() }
+            val two = async { doSomethingUsefulTwo() }
+            println(one.await() + two.await())
+        }
+    }
 }
 
 

@@ -7,8 +7,13 @@ fun main() {
             println("1: My context is: $coroutineContext \n: I'm working in thread ${Thread.currentThread().name} \n")
         }
         launch(Dispatchers.Unconfined) { // not confined -- sử dụng Thread của Dispatcher bên ngoài
-            delay(100)
             println("2: My context is: $coroutineContext \n: I'm working in thread ${Thread.currentThread().name} \n")
+            delay(100)
+            println("2.1: My context is: $coroutineContext \n: I'm working in thread ${Thread.currentThread().name} \n")
+            withContext(newSingleThreadContext("root Dispatcher 2")) {
+
+            }
+            println("2.2: My context is: $coroutineContext \n: I'm working in thread ${Thread.currentThread().name} \n")
         }
         launch(Dispatchers.Default) { // Sử dụng DefaultDispatcher
             delay(200)
