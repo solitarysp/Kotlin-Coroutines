@@ -1,12 +1,9 @@
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 fun main() {
     runBlocking {
         val parentJob = launch(newSingleThreadContext("Ctx1")) {
-            val childJob = launch(newSingleThreadContext("Ctx12")) {
+            GlobalScope.launch(newSingleThreadContext("Ctx12")) {
                 var count = 1
                 while (count <= 5) {
                     println("Count: $count")
