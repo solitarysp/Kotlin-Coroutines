@@ -5,12 +5,15 @@ import java.lang.reflect.Field
 fun main() {
 
     runBlocking(newSingleThreadContext("root Dispatcher")) {
+            launch(Dispatchers.Default) { // Sử dụng DefaultDispatcher
+                println("Default: My context is: $coroutineContext  \n: I'm working in thread ${Thread.currentThread().hashCode()} \n")
 
-        launch(Dispatchers.Default) { // Sử dụng DefaultDispatcher
-            println("A")
+            }
+        launch(Dispatchers.IO) { // Sử dụng DefaultDispatcher
+            println("4: My context is: $coroutineContext  \n: I'm working in thread ${Thread.currentThread().hashCode()} \n")
         }
         launch(Dispatchers.IO) { // Sử dụng DefaultDispatcher
-            println("B")
+            println("5: My context is: $coroutineContext  \n: I'm working in thread ${Thread.currentThread().hashCode()} \n")
         }
     }
 
