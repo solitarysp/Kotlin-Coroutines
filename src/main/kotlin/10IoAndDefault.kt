@@ -5,7 +5,7 @@ import java.lang.reflect.Field
 fun main() {
 
     runBlocking(newSingleThreadContext("root Dispatcher")) {
-            launch(Dispatchers.Default) { // Sử dụng DefaultDispatcher
+            launch(Dispatchers.Default.limitedParallelism(1)) { // Sử dụng DefaultDispatcher
                 println("Default: My context is: $coroutineContext  \n: I'm working in thread ${Thread.currentThread().hashCode()} \n")
 
             }
