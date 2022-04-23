@@ -6,16 +6,16 @@ import kotlin.system.measureTimeMillis
 fun main() {
 
     //measureTimeMillis là method sử dụng để đo thời gian call
-
-    // defult tuần tự từng method một
-    runBlocking() {
-        val time = measureTimeMillis {
-            val one = doSomethingUsefulOne()
-            val two = doSomethingUsefulTwo()
-            println("The answer is ${one + two}")
-        }
-        println("Completed in $time ms")
-    }
+//
+//    // defult tuần tự từng method một
+//    runBlocking() {
+//        val time = measureTimeMillis {
+//            val one = doSomethingUsefulOne()
+//            val two = doSomethingUsefulTwo()
+//            println("The answer is ${one + two}")
+//        }
+//        println("Completed in $time ms")
+//    }
 
     // async  chờ kết quả cả 2 method chạy xong xong
     runBlocking() {

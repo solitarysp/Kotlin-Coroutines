@@ -2,13 +2,13 @@ import kotlinx.coroutines.*
 
 fun main() {
 
-   // Join()
+    //Join()
 
-    cancelAndJoin()
+    //cancelAndJoin()
 
     //cancelAndJoinWithCurrentTimeMillis()
 
-   // cancelAndJoinFinally()
+    cancelAndJoinFinally()
 }
 
 private fun cancelAndJoinFinally() {
@@ -23,6 +23,7 @@ private fun cancelAndJoinFinally() {
                 println("finally")
             }
         }
+        delay(3000L)
         job.cancelAndJoin()
         println("Done")
     }
